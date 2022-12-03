@@ -9,11 +9,37 @@ $(function runScheduler() {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
   var saveBtn = $(".saveBtn");
-  var description = $(".description");
 
   saveBtn.on("click", function() {
-    var parentEl = $(this).parent().attr("id");
-    alert(parentEl);
+    var parentEl = $(this).parent();
+    var description = $(this).siblings("textarea");
+    var descriptionArray = ["","","","","","","","",""];
+    
+    var savedArrayString = localStorage.getItem("descriptionArray");
+    var savedArray = JSON.parse(savedArrayString);
+    descriptionArray = savedArray;
+
+    if (parentEl.attr("id") === "hour-9") {
+      descriptionArray.splice(0, 1, description.val());
+    } else if (parentEl.attr("id") === "hour-10") {
+      descriptionArray.splice(1, 1, description.val());
+    } else if (parentEl.attr("id") === "hour-11") {
+      descriptionArray.splice(2, 1, description.val());
+    } else if (parentEl.attr("id") === "hour-12") {
+      descriptionArray.splice(3, 1, description.val());
+    } else if (parentEl.attr("id") === "hour-1") {
+      descriptionArray.splice(4, 1, description.val());
+    } else if (parentEl.attr("id") === "hour-2") {
+      descriptionArray.splice(5, 1, description.val());
+    } else if (parentEl.attr("id") === "hour-3") {
+      descriptionArray.splice(6, 1, description.val());
+    } else if (parentEl.attr("id") === "hour-4") {
+      descriptionArray.splice(7, 1, description.val());
+    } else {
+      descriptionArray.splice(8, 1, description.val());
+    }
+    console.log(descriptionArray);
+    localStorage.setItem("descriptionArray", JSON.stringify(descriptionArray)); 
   });
 
   //
@@ -47,6 +73,8 @@ for (var i = 0; i < hours.length; i++) {
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
+
+  
   
 
 
