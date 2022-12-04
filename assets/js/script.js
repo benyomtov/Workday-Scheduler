@@ -86,4 +86,8 @@ $(function runScheduler() {
   }
   
   // TODO: Add code to display the current date in the header of the page.
+
+  var currentDay = $("#currentDay");
+  currentDay.text(dayjs().format("dddd, MMMM D"));
+
 });
